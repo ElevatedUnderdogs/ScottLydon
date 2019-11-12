@@ -16,6 +16,7 @@ public typealias IntAction = (Int) -> Void
 
 public extension UIImage {
     
+    @available(iOS 11.0, *)
     func hasFace(hasFaceCompletion: @escaping SuccessAction) {
         faceCount { count in
             hasFaceCompletion(count >= 1)

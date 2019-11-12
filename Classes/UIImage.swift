@@ -22,6 +22,7 @@ public extension UIImage {
         }
     }
     
+   @available(iOS 11.0, *)
     func faceCount(faceCountAction: @escaping IntAction) {
         let request = VNDetectFaceRectanglesRequest { request, err in
             if let err = err {

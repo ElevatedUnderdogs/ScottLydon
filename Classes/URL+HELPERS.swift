@@ -11,6 +11,15 @@ import Foundation
 
 public extension URL {
     
+    func getJSON(_ jsonAction: DictionaryAction? = nil) {
+        sessionDataTask(provideJSON: jsonAction)?.resume()
+    }
+    
+    func getString(_ stringAction: StringAction? = nil) {
+        sessionDataTask(provideString: stringAction)?.resume()
+    }
+    
+    @available(*, deprecated)
     func get(line: Int = #line, file: String = #file, _ jsonAction: URLSession.JSONAction? = nil) {
         return URLSession.dataTask(with: self, line: line, file: file, jsonAction: jsonAction)
     }
@@ -27,6 +36,27 @@ public extension URL {
                 return
             }
             provideString?(document)
+        }
+    }
+    
+    func sessionDataTask(provideJSON: DictionaryAction?) -> URLSessionDataTask? {
+
+        return URLSession.shared.dataTask(with: self) {
+            data, response, error in
+            guard let data = data else {
+                print("ERROR: data was nil for the call from: \(self), ")
+                return
+            }
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    print("Warning: we were able to serialize the json but not cast it a [String: Any]...This would seem imposible without catching an error.")
+                    return
+                }
+                provideJSON?(json)
+            } catch let err {
+                print(err.localizedDescription, "for url: \(self)")
+                provideJSON?([:])
+            }
         }
     }
 }

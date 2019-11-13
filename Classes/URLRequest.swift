@@ -24,7 +24,12 @@ public extension URLRequest {
         let boundary: String = .generateBoundaryString
         setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         guard let imgData = img.jpegData(compressionQuality: 1.0) else { return }
-        httpBody = Data(parameters: nil, filePathKey: "userfile", imageDataKey: imgData, boundary: boundary)
+        httpBody = Data(
+            parameters: nil,
+            filePathKey: "userfile",
+            imageDataKey: imgData,
+            boundary: boundary
+        )
     }
 
     

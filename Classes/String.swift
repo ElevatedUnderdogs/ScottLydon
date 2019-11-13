@@ -76,7 +76,9 @@ public extension String {
     }
     
     var scaped: String? {
-        return addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        return addingPercentEncoding(
+            withAllowedCharacters: .urlQueryAllowed
+        )
     }
     
     typealias AttributedString = NSMutableAttributedString
@@ -100,10 +102,14 @@ public extension String {
     func bold(string boldString: String, font: UIFont) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(
             string: self,
-            attributes: [NSAttributedString.Key.font: font]
+            attributes: [
+                NSAttributedString.Key.font: font
+            ]
         )
         let boldFontAttribute: [NSAttributedString.Key: Any] = [
-            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)
+            NSAttributedString.Key.font: UIFont.boldSystemFont(
+                ofSize: font.pointSize
+            )
         ]
         let range = (self as NSString).range(of: boldString)
         attributedString.addAttributes(
@@ -121,5 +127,9 @@ public extension String {
     
     static var appVersion: String? {
         return Bundle.version
+    }
+    
+    var url: URL? {
+        return URL(string: self)
     }
 }

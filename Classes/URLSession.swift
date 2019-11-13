@@ -29,7 +29,6 @@ public extension URLSession {
             }.resume()
     }
     
-    // local
     func dataTask(_ request: URLRequest, _ jsonAction: DictionaryAction? = nil) {
         URLSession.shared.dataTask(with: request) {
             data, response, error in

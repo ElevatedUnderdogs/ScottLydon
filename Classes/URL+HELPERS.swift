@@ -21,7 +21,12 @@ public extension URL {
     
     @available(*, deprecated)
     func get(line: Int = #line, file: String = #file, _ jsonAction: URLSession.JSONAction? = nil) {
-        return URLSession.dataTask(with: self, line: line, file: file, jsonAction: jsonAction)
+        return URLSession.dataTask(
+            with: self,
+            line: line,
+            file: file,
+            jsonAction: jsonAction
+        )
     }
     
     func sessionDataTask(provideString: StringAction?) -> URLSessionDataTask? {

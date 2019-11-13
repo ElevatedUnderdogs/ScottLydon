@@ -132,4 +132,16 @@ public extension String {
     var url: URL? {
         return URL(string: self)
     }
+    
+    ///If the string is an absolute url  this will make the call and fetch the JSON.  If not, this will do nothing.
+    func getJSON(_ jsonAction: DictionaryAction? = nil) {
+        assert(url != nil)
+        url?.sessionDataTask(provideJSON: jsonAction)?.resume()
+    }
+    
+    ///If the string is an absolute url this will make the call and fetch the document as a string.
+    func getString(_ stringAction: StringAction? = nil) {
+        assert(url != nil)
+        url?.sessionDataTask(provideString: stringAction)?.resume()
+    }
 }

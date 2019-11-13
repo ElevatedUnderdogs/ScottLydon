@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ScottLydon"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "A cocoapod for interviews and new projects with generally helpful helpers"
   s.description  = "A cocoapod for interviews and new projects with generally helpful helpers.  "
   s.homepage     = "https://github.com/ElevatedUnderdogs/ScottLydon"

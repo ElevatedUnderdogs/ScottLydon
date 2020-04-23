@@ -18,3 +18,9 @@ Then run `pod install`
 Open your app from the workspace, 
 
 `import ScottLydon` when you want to use it, and enjoy. 
+
+## TO DO
+
+- Convert all Swift code to Objective C so that Objective C developers can use this library. 
+- Rename to something less Generic
+- Split up into smaller more specific sub modules.  
